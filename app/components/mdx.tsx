@@ -125,6 +125,9 @@ export function CustomMDX(props) {
       {...props}
       components={{ ...components, ...(props.components || {}) }}
       options={{
+        // Content is authored locally, not user-submitted, so it's safe to
+        // allow JS expressions (e.g. array/object literals in JSX props).
+        blockJS: false,
         mdxOptions: {
           remarkPlugins: [remarkMath],
           rehypePlugins: [rehypeKatex],
