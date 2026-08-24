@@ -10,16 +10,17 @@ import './tweet.css';
 
 const TweetContent = async ({ id, components, onError }: TweetProps) => {
   let error;
-  const tweet = id
-    ? await getTweet(id).catch((err) => {
-        if (onError) {
-          error = onError(err);
-        } else {
-          console.error(err);
-          error = err;
-        }
-      })
-    : undefined;
+  let tweet;
+  try {
+    tweet = id ? await getTweet(id) : undefined;
+  } catch (err) {
+    if (onError) {
+      error = onError(err);
+    } else {
+      console.error(err);
+      error = err;
+    }
+  }
 
   if (!tweet) {
     const NotFound = components?.TweetNotFound || TweetNotFound;
