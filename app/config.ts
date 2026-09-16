@@ -3,7 +3,8 @@ export const metaData = {
   title: "moodi.dev",
   name: "Ehsan Moodi",
   ogImage: "/opengraph-image.png",
-  description: "Ehsan Moodi, Senior Frontend developer",
+  description:
+    "Ehsan Moodi, full-stack developer and AI enthusiast building with AI tools",
 };
 
 export const socialLinks = {

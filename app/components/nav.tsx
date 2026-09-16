@@ -9,10 +9,10 @@ const navItems = {
 
 export function Navbar() {
   return (
-    <nav className="lg:mb-16 mb-12 py-5">
+    <nav className="mb-10 py-5 lg:mb-14">
       <div className="flex flex-col md:flex-row md:items-center justify-between">
         <div className="flex items-center">
-          <Link href="/" className="text-3xl font-semibold">
+          <Link href="/" className="text-2xl font-semibold tracking-[-0.04em]">
             {metaData.title}
           </Link>
         </div>
@@ -21,7 +21,7 @@ export function Navbar() {
             <Link
               key={path}
               href={path}
-              className="transition-all hover:text-neutral-800 dark:hover:text-neutral-200 flex align-middle relative"
+              className="relative flex align-middle text-sm transition-all hover:text-neutral-800 dark:hover:text-neutral-200"
             >
               {name}
             </Link>

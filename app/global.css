@@ -37,6 +37,140 @@ html {
   min-width: 360px;
 }
 
+body {
+  background: #fafafa;
+}
+
+.dark body {
+  background: #101010;
+}
+
+.eyebrow {
+  color: #737373;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.dark .eyebrow {
+  color: #a3a3a3;
+}
+
+.minimal-home {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 3svh, 1.75rem);
+  justify-content: center;
+  min-height: 0;
+  padding: 0.5rem 0;
+  text-align: center;
+}
+
+body:has(.minimal-home) {
+  margin: 0;
+  min-height: 100svh;
+}
+
+main:has(.minimal-home) {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  margin-top: 0;
+  min-height: 100svh;
+}
+
+main:has(.minimal-home) nav {
+  margin-bottom: 0;
+  padding-bottom: 0.75rem;
+  padding-top: 0.75rem;
+}
+
+main:has(.minimal-home) nav > div {
+  align-items: center;
+  flex-direction: row;
+}
+
+main:has(.minimal-home) nav > div > div:last-child {
+  margin-top: 0;
+}
+
+main:has(.minimal-home) > small {
+  margin-top: 0;
+  padding-bottom: 0.75rem;
+}
+
+main:has(.minimal-home) .minimal-home {
+  height: 100%;
+}
+
+.minimal-portrait {
+  aspect-ratio: 4 / 5;
+  border-radius: 999px;
+  filter: grayscale(100%);
+  object-fit: cover;
+  object-position: center top;
+  transition: filter 400ms ease;
+  width: auto;
+  height: min(38svh, 260px);
+}
+
+.minimal-portrait:hover {
+  filter: grayscale(0%);
+}
+
+.minimal-tagline {
+  font-size: clamp(1.5rem, 4vw, 3.5rem);
+  font-weight: 500;
+  letter-spacing: -0.06em;
+  line-height: 1.05;
+  max-width: 680px;
+  text-wrap: balance;
+}
+
+.minimal-supporting-text {
+  color: #737373;
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
+  line-height: 1.5;
+  margin-top: -0.75rem;
+  max-width: 440px;
+  text-wrap: balance;
+}
+
+.dark .minimal-supporting-text {
+  color: #a3a3a3;
+}
+
+@media (max-height: 600px) {
+  main:has(.minimal-home) nav {
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
+  }
+
+  main:has(.minimal-home) > small {
+    padding-bottom: 0.5rem;
+  }
+
+  .minimal-home {
+    gap: 0.75rem;
+  }
+
+  .minimal-portrait {
+    height: min(34svh, 190px);
+  }
+
+  .minimal-tagline {
+    font-size: clamp(1.35rem, 5vw, 2rem);
+    max-width: 520px;
+  }
+
+  .minimal-supporting-text {
+    font-size: 0.8rem;
+    margin-top: -0.4rem;
+  }
+}
+
 .prose {
   @apply text-[#000000] dark:text-[#FFFFFF];
 }
