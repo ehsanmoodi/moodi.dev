@@ -1,31 +1,66 @@
 import Image from "next/image";
-import { socialLinks } from "./config";
 
 export default function Page() {
   return (
-    <section>
-      <a href={socialLinks.twitter} target="_blank">
-        <Image
-          src="/profile.jpeg"
-          alt="Profile photo"
-          className="rounded-full bg-gray-100 block lg:mt-5 mt-0 lg:mb-5 mb-10 mx-auto sm:float-right sm:ml-5 sm:mb-5 grayscale hover:grayscale-0"
-          unoptimized
-          width={160}
-          height={160}
-          priority
-        />
-      </a>
-      <h1 className="mb-8 text-2xl font-medium">Ehsan Moodi</h1>
-      <div className="prose prose-neutral dark:prose-invert">
-        <p>Senior front-end developer:</p>
-        <ul>
-          <li>Passionate about clean, accessible, and maintainable code</li>
-          <li>
-            Proficient in JavaScript, React.js, TypeScript, and modern
-            frameworks
-          </li>
-          <li>Effective in collaborative, agile environments</li>
-        </ul>
+    <section className="home-c">
+      <svg
+        className="home-c-grain"
+        aria-hidden="true"
+        preserveAspectRatio="none"
+      >
+        <defs>
+          <filter id="grain-light">
+            <feTurbulence
+              type="fractalNoise"
+              baseFrequency="0.85"
+              numOctaves="2"
+              stitchTiles="stitch"
+            />
+            <feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.12 0" />
+          </filter>
+          <filter id="grain-dark">
+            <feTurbulence
+              type="fractalNoise"
+              baseFrequency="0.85"
+              numOctaves="2"
+              stitchTiles="stitch"
+            />
+            <feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.09 0" />
+          </filter>
+        </defs>
+        <rect width="100%" height="100%" />
+      </svg>
+
+      <div className="home-c-content">
+        <main className="home-c-main">
+          <h1 className="home-c-name">
+            <span>Ehsan</span>
+            <Image
+              src="/portrait-name.jpg"
+              alt="Portrait of Ehsan Steven Moodi"
+              width={156}
+              height={108}
+              priority
+              className="home-c-portrait"
+            />
+            <em>Steven</em>
+            <span>Moodi</span>
+          </h1>
+
+          <div className="home-c-divider" />
+
+          <h2 className="home-c-headline">
+            I build web and mobile products,{" "}
+            <em>from first idea to production.</em>
+          </h2>
+
+          <p className="home-c-support">
+            Full-stack engineer working with <strong>React</strong>,{" "}
+            <strong>Next.js</strong>, <strong>Laravel</strong> and{" "}
+            <strong>Flutter</strong>. AI tools help me get from idea to product
+            faster.
+          </p>
+        </main>
       </div>
     </section>
   );
