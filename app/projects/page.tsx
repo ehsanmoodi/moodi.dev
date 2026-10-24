@@ -4,30 +4,87 @@ import { projects } from "./project-data";
 
 export const metadata: Metadata = {
   title: "Projects",
-  description: "Nextfolio Projects",
+  description: "Projects by Ehsan Moodi",
 };
 
 export default function Projects() {
   return (
-    <section>
-      <h1 className="mb-8 text-2xl font-medium">Projects</h1>
-      <div>
-        {projects.map((project, index) => (
-          <Link
-            key={index}
-            href={project.url}
-            className="flex flex-col space-y-1 mb-5 transition-opacity duration-200 hover:opacity-80"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <div className="w-full flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-1 sm:space-y-0 sm:space-x-2">
-              <h2 className="text-black dark:text-white">{project.title}</h2>
-              <p className="text-neutral-600 dark:text-neutral-400">
-                {project.description}
-              </p>
-            </div>
-          </Link>
-        ))}
+    <section className="projects-c">
+      <svg
+        className="home-c-grain"
+        aria-hidden="true"
+        preserveAspectRatio="none"
+      >
+        <defs>
+          <filter id="grain-light">
+            <feTurbulence
+              type="fractalNoise"
+              baseFrequency="0.85"
+              numOctaves="2"
+              stitchTiles="stitch"
+            />
+            <feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.12 0" />
+          </filter>
+          <filter id="grain-dark">
+            <feTurbulence
+              type="fractalNoise"
+              baseFrequency="0.85"
+              numOctaves="2"
+              stitchTiles="stitch"
+            />
+            <feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.09 0" />
+          </filter>
+        </defs>
+        <rect width="100%" height="100%" />
+      </svg>
+
+      <div className="projects-c-content">
+        <header className="projects-c-header">
+          <div className="projects-c-divider" aria-hidden="true" />
+          <h1 className="projects-c-title">Projects</h1>
+          <p className="projects-c-sub">
+            A selection of products I&apos;ve built and shipped.
+          </p>
+        </header>
+
+        <ul className="projects-c-list">
+          {projects.map((project) => (
+            <li key={project.url}>
+              <Link
+                href={project.url}
+                className="projects-c-item"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="projects-c-item-title">{project.title}</span>
+                {project.description ? (
+                  <span className="projects-c-item-desc">
+                    {project.description}
+                  </span>
+                ) : (
+                  <span className="projects-c-item-desc projects-c-item-desc-empty">
+                    —
+                  </span>
+                )}
+                <svg
+                  className="projects-c-item-arrow"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.6"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M7 17 17 7" />
+                  <path d="M8 7h9v9" />
+                </svg>
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );
